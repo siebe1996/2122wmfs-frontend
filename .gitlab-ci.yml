@@ -1,0 +1,20 @@
+build site:
+  image: node:latest
+  stage: build
+  script:
+    - npm install --progress=false
+    - npm run build
+
+lint:
+  image: node:latest
+  stage: test
+  script:
+    - npm install --progress=false
+    - npm run lint
+
+unit test:
+  image: node:latest
+  stage: test
+  script:
+    - npm install --progress=false
+    - npm run test:unit
