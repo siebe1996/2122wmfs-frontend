@@ -11,6 +11,7 @@
           </select>
         </div>
         <div class="form-field">
+          <label for="message">Message</label>
           <input
             type="text"
             id="message"
@@ -91,5 +92,9 @@ input {
   border: 1px solid #40c488;
   padding-left: 10px;
   margin-bottom: 2rem;
+}
+
+label {
+  display: none;
 }
 </style>

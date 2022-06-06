@@ -3,6 +3,7 @@
     <div>
       <form @submit.prevent="searchUsers">
         <div class="form-field">
+          <label for="fname">Password</label>
           <input
             type="text"
             id="fname"
@@ -132,5 +133,8 @@ select {
 
 #players {
   margin-bottom: 5rem;
+}
+label {
+  display: none;
 }
 </style>

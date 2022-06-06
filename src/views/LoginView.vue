@@ -3,6 +3,7 @@
     <form @submit.prevent="login(auth)">
       <div class="c-login__input">
         <i class="fa fa-user icon"></i>
+        <label for="email">email</label>
         <input
           id="email"
           v-model="auth.email"
@@ -13,6 +14,7 @@
       </div>
       <div class="c-login__input">
         <i class="fa fa-key icon"></i>
+        <label for="password">Password</label>
         <input
           id="password"
           v-model="auth.password"
@@ -86,6 +88,9 @@ export default {
   }
   &__submit {
     margin: 3rem auto;
+  }
+  label {
+    display: none;
   }
 }
 </style>
