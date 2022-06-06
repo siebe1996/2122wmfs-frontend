@@ -91,6 +91,7 @@ export default {
     killPlayer(userId) {
       let params = "gameId=" + this.gameId + "&userId=" + userId;
       this.patchAliveStateUser(params);
+      this.searchUsers();
     },
     searchUsers() {
       let params = "gameId=" + this.gameId;
