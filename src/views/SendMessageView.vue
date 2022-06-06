@@ -5,7 +5,7 @@
         <div class="form-field">
           <select id="receiver" v-model="formInput.user">
             <option hidden>Select a user to send a message</option>
-            <option v-for="user in users" :key="user.id" :value="user.id">
+            <option v-for="user in users" :value="user.id" :key="user.id">
               {{ user.email }}
             </option>
           </select>
@@ -30,8 +30,7 @@
 import { mapActions, mapGetters } from "vuex";
 import GotchaNavigation from "../components/organismes/GotchaNavigation.vue";
 import GotchaButton from "../components/atoms/GotchaButton.vue";
-import Echo from "laravel-echo";
-//import Pusher from "pusher-js";
+import router from "../router";
 
 export default {
   components: { GotchaButton, GotchaNavigation },
@@ -47,6 +46,7 @@ export default {
   computed: {
     ...mapGetters({
       users: "message/getUsers",
+      userLoggedIn: "auth/user",
     }),
   },
   methods: {
@@ -56,20 +56,15 @@ export default {
     }),
     sendMessage() {
       this.postMessage(this.formInput);
+      router.push("/messages");
     },
   },
   created() {},
   mounted() {
-    //const client = require('pusher-js');
-    window.Echo = new Echo({
-      broadcaster: "pusher",
-      cluster: "mt1",
-      //host: 'http://localhost:8080',
-      key: "1b2a", //Add your pusher key here
-    });
-    window.Echo.channel(`chat-message`).listen("ChatMessage", (res) => {
+    /*console.log(this.userLoggedIn.id);
+    window.Echo.private(`chat-message.${this.userLoggedIn.id}`).listen("ChatMessage", (res) => {
       console.log("test" + res);
-    });
+    });*/
   },
 };
 </script>

@@ -20,6 +20,7 @@ export default {
           items: "",
         },
       ],
+      success: undefined,
     };
   },
   getters: {
@@ -36,6 +37,9 @@ export default {
     },
     SET_INFO_GAMES_PREVIOUS(state, value) {
       state.infoGamesPrevious = value;
+    },
+    SET_SUCESS(state, value) {
+      state.success = value;
     },
   },
   actions: {
@@ -55,10 +59,11 @@ export default {
         })
         .then(function () {});
     },
-    async postGameUser(gameId) {
+    async postGameUser({ commit }, gameId) {
       await axios
         .post(`/api/userinfo`, { gameId: gameId })
         .then(function () {
+          commit("SET_SUCESS", "sucess");
           console.log("sucess");
         })
         .catch(function (error) {

@@ -10,6 +10,7 @@ export default {
     return {
       messages: undefined,
       users: undefined,
+      success: undefined,
     };
   },
   getters: {
@@ -26,6 +27,9 @@ export default {
     },
     SET_USERS(state, value) {
       state.users = value;
+    },
+    SET_SUCESS(state, value) {
+      state.success = value;
     },
   },
   actions: {
@@ -57,10 +61,12 @@ export default {
         })
         .then(function () {});
     },
-    async postMessage(message) {
+    async postMessage({ commit }, message) {
+      console.log(message.user + " message");
       await axios
         .post(`/api/messages`, message)
         .then(function () {
+          commit("SET_SUCESS", "sucess");
           console.log("sucess");
         })
         .catch(function (error) {
