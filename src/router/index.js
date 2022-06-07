@@ -15,7 +15,7 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: () => import("../views/HomeView.vue"),
-      meta: { requiresAuth: true, title: "Home | Gotcha" },
+      meta: { requiresAuth: true, },
       beforeEnter: async (to, from, next) => {
         console.warn("fetching currentGames beforeEnter");
         await store.dispatch("home/fetchCurrentGames");
